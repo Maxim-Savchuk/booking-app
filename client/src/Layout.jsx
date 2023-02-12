@@ -4,7 +4,7 @@ import { Navbar } from './components'
 
 const Layout = () => {
     return (
-        <div className='p-4'>
+        <div className='p-4 flex flex-col min-h-screen font-medium'>
             <Navbar />
             <Outlet />
         </div>

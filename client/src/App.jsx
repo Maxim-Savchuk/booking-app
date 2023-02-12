@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom';
-import { HomePage, LoginPage } from './pages';
+import { HomePage, LoginPage, RegisterPage } from './pages';
 import Layout from './Layout'
 
 const App = () => {
@@ -9,6 +9,7 @@ const App = () => {
       <Route path='/' element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path='/login' element={<LoginPage />} />
+        <Route path='/register' element={<RegisterPage />} />
       </Route>
     </Routes>
   )
