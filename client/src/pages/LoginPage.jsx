@@ -31,7 +31,7 @@ const LoginPage = () => {
             const { data } = await axios.post('/login', {
                 email,
                 password
-            }, { withCredentials: true }) // accept cookies
+            })
             setUser(data)
             alert('Login successful !')
             setRedirect(true)
