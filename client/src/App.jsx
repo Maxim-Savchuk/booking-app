@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
-import { HomePage, LoginPage, RegisterPage } from './pages';
+import { HomePage, LoginPage, RegisterPage, AccountPage } from './pages';
 import Layout from './Layout'
 
 import { UserContextProvider } from './UserContext';
@@ -17,6 +17,7 @@ const App = () => {
           <Route index element={<HomePage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
+          <Route path='/account/:subpage?' element={<AccountPage />} />
         </Route>
       </Routes>
     </UserContextProvider>
