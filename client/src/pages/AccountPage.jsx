@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import axios from 'axios';
 import { UserContext } from '../UserContext';
+import { Bookings, Places } from '../components';
 
 const AccountPage = () => {
     const [redirect, setRedirect] = React.useState(null);
@@ -49,6 +50,12 @@ const AccountPage = () => {
                     Logged in as {user.name} ({user.email})
                     <button onClick={logout} className='primary max-w-sm mt-4'>Logout</button>
                 </div>
+            )}
+            {subpage === 'places' && (
+                <Places />
+            )}
+            {subpage === 'bookings' && (
+                <Bookings />
             )}
         </div>
     )
