@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
+import PlacesForm from './PlacesForm';
 
 const Places = () => {
     const { action } = useParams();
@@ -17,25 +18,10 @@ const Places = () => {
                 </div>
             )}
             {action === 'new' && (
-                <div>
-                    <form >
-                        <h2 className='text-2xl mt-4'>Title</h2>
-                        <p className='text-gray-500 text-sm'>Title for your place. should be short and catchy as in advertisement</p>
-                        <input type="text" placeholder='Title, for exampe: My lovely apartment' />
-                        <h2 className='text-2xl mt-4'>Adress</h2>
-                        <p className='text-gray-500 text-sm'>Adress to your place</p>
-                        <input type="text" placeholder='adress' />
-                        <h2 className='text-2xl mt-4'>Photos</h2>
-                        <p className='text-gray-500 text-sm'>More = better</p>
-                        <div className=' mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
-                            <button className='border bg-transparent rounded-2xl p-8 text-2xl text-gray-600 hover:text-black'>+</button>
-                        </div>
-                    </form>
-                </div>
-            )
-            }
+                <PlacesForm />
+            )}
         </div>
     )
 }
 
-export default Places
+export default Places;
