@@ -2,9 +2,9 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import { HomePage, LoginPage, RegisterPage, AccountPage } from './pages';
-import Layout from './Layout'
+import { Layout } from './components';
 
-import { UserContextProvider } from './UserContext';
+import { UserContextProvider } from './context/UserContext.jsx';
 
 axios.defaults.baseURL = 'http://localhost:4000';
 axios.defaults.withCredentials = true;

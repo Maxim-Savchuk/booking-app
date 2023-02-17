@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import axios from 'axios';
-import { UserContext } from '../UserContext';
+import { UserContext } from '../context/UserContext.jsx';
 import { Bookings, Places } from '../components';
 
 const AccountPage = () => {
