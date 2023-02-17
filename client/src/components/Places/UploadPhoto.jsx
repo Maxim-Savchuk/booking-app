@@ -1,7 +1,11 @@
 import React from 'react'
 import axios from 'axios';
 
-const UploadPhoto = ({ handleChange, photoLink, addedPhotos, setAddedPhotos, setPhotoLink }) => {
+import InputLabel from './InputLabel.jsx';
+
+const UploadPhoto = ({ handleChange, addedPhotos, setAddedPhotos }) => {
+    const [photoLink, setPhotoLink] = React.useState('');
+
     const addPhotoByLink = async (e) => {
         e.preventDefault();
 
@@ -32,6 +36,7 @@ const UploadPhoto = ({ handleChange, photoLink, addedPhotos, setAddedPhotos, set
 
     return (
         <>
+            <InputLabel text={'Photos'} info={'More = better'} />
             <div className='flex gap-2'>
                 <input onChange={handleChange} value={photoLink} name='photoLink' type="text" placeholder='Add using a link ....jpg' />
                 <button onClick={addPhotoByLink} className='bg-gray-200 px-4 rounded-2xl'>
@@ -55,4 +60,4 @@ const UploadPhoto = ({ handleChange, photoLink, addedPhotos, setAddedPhotos, set
     )
 }
 
-export default UploadPhoto
+export default UploadPhoto;
