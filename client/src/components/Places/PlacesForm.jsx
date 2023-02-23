@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 
 import Perks from './Perks.jsx';
 import InputLabel from './InputLabel.jsx';
@@ -9,6 +9,7 @@ import Checking from './Checking.jsx';
 import ProfileNav from '../Profile/ProfileNav.jsx';
 
 const PlacesForm = () => {
+    const { id } = useParams();
     const [title, setTitle] = React.useState('');
     const [address, setAddress] = React.useState('');
     const [photoLink, setPhotoLink] = React.useState('');
@@ -20,6 +21,24 @@ const PlacesForm = () => {
     const [checkOut, setCheckOut] = React.useState('');
     const [maxGuests, setMaxGuests] = React.useState(1);
     const [redirect, setRedirect] = React.useState('');
+
+    React.useEffect(() => {
+        if (!id) {
+            return;
+        }
+        axios.get('/places/' + id).then(res => {
+            const { data } = res;
+            setTitle(data.title);
+            setAddress(data.address);
+            setAddedPhotos(data.photos);
+            setDescription(data.description);
+            setPerks(data.perks);
+            setExtraInfo(data.extraInfo);
+            setCheckIn(data.checkIn);
+            setCheckOut(data.checkOut);
+            setMaxGuests(data.maxGuests);
+        })
+    }, [id])
 
     const handleChange = (e) => {
         const { name, value } = e.currentTarget;
@@ -54,9 +73,9 @@ const PlacesForm = () => {
         }
     };
 
-    const addNewPlace = async (e) => {
+    const savePlace = async (e) => {
         e.preventDefault();
-        await axios.post('/places', {
+        const placeData = {
             title,
             address,
             addedPhotos,
@@ -66,8 +85,17 @@ const PlacesForm = () => {
             checkIn,
             checkOut,
             maxGuests
-        });
-        setRedirect('/account/places');
+        }
+        if (id) {
+            await axios.put('/places', {
+                id,
+                ...placeData
+            });
+            setRedirect('/account/places');
+        } else {
+            await axios.post('/places', placeData);
+            setRedirect('/account/places');
+        }
     }
 
     if (redirect) {
@@ -77,7 +105,7 @@ const PlacesForm = () => {
     return (
         <div>
             <ProfileNav />
-            <form onSubmit={addNewPlace}>
+            <form onSubmit={savePlace}>
                 <InputLabel text={'Title'} info={'Title for your place. should be short and catchy as in advertisement'} />
                 <input onChange={handleChange} value={title} name='title' type="text" placeholder='Title, for exampe: My lovely apartment' />
                 <InputLabel text={'Address'} info={'Address to your place'} />
