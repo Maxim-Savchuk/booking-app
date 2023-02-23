@@ -1,15 +1,17 @@
 import React from 'react';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 import Perks from './Perks.jsx';
 import InputLabel from './InputLabel.jsx';
 import UploadPhoto from './UploadPhoto.jsx';
 import Checking from './Checking.jsx';
-import { Navigate } from 'react-router-dom';
+import ProfileNav from '../Profile/ProfileNav.jsx';
 
 const PlacesForm = () => {
     const [title, setTitle] = React.useState('');
     const [address, setAddress] = React.useState('');
+    const [photoLink, setPhotoLink] = React.useState('');
     const [addedPhotos, setAddedPhotos] = React.useState([]);
     const [description, setDescription] = React.useState('');
     const [perks, setPerks] = React.useState([]);
@@ -74,6 +76,7 @@ const PlacesForm = () => {
 
     return (
         <div>
+            <ProfileNav />
             <form onSubmit={addNewPlace}>
                 <InputLabel text={'Title'} info={'Title for your place. should be short and catchy as in advertisement'} />
                 <input onChange={handleChange} value={title} name='title' type="text" placeholder='Title, for exampe: My lovely apartment' />
@@ -83,6 +86,8 @@ const PlacesForm = () => {
                     handleChange={handleChange}
                     addedPhotos={addedPhotos}
                     setAddedPhotos={setAddedPhotos}
+                    setPhotoLink={setPhotoLink}
+                    photoLink={photoLink}
                 />
                 <InputLabel text={'Description'} info={'Description of the place'} />
                 <textarea onChange={handleChange} value={description} name='description' />

@@ -3,8 +3,7 @@ import axios from 'axios';
 
 import InputLabel from './InputLabel.jsx';
 
-const UploadPhoto = ({ handleChange, addedPhotos, setAddedPhotos }) => {
-    const [photoLink, setPhotoLink] = React.useState('');
+const UploadPhoto = ({ handleChange, addedPhotos, setAddedPhotos, setPhotoLink, photoLink }) => {
 
     const addPhotoByLink = async (e) => {
         e.preventDefault();
