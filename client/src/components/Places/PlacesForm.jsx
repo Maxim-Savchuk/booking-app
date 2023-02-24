@@ -20,6 +20,7 @@ const PlacesForm = () => {
     const [checkIn, setCheckIn] = React.useState('');
     const [checkOut, setCheckOut] = React.useState('');
     const [maxGuests, setMaxGuests] = React.useState(1);
+    const [price, setPrice] = React.useState(1);
     const [redirect, setRedirect] = React.useState('');
 
     React.useEffect(() => {
@@ -37,6 +38,7 @@ const PlacesForm = () => {
             setCheckIn(data.checkIn);
             setCheckOut(data.checkOut);
             setMaxGuests(data.maxGuests);
+            setPrice(data.price)
         })
     }, [id])
 
@@ -68,6 +70,9 @@ const PlacesForm = () => {
             case 'maxGuests':
                 setMaxGuests(value);
                 break;
+            case 'price':
+                setPrice(value);
+                break;
             default:
                 return;
         }
@@ -84,7 +89,8 @@ const PlacesForm = () => {
             extraInfo,
             checkIn,
             checkOut,
-            maxGuests
+            maxGuests,
+            price
         }
         if (id) {
             await axios.put('/places', {
@@ -130,6 +136,7 @@ const PlacesForm = () => {
                     checkIn={checkIn}
                     checkOut={checkOut}
                     maxGuests={maxGuests}
+                    price={price}
                 />
                 <button className='primary my-4'>Save</button>
             </form>

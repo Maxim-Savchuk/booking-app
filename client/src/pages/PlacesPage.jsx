@@ -7,7 +7,7 @@ const PlacesPage = () => {
     const [places, setPlaces] = React.useState([]);
 
     React.useEffect(() => {
-        axios.get('/places').then(({ data }) => {
+        axios.get('/user-places').then(({ data }) => {
             setPlaces(data);
         })
     }, []);
