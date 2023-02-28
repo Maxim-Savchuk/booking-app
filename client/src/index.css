@@ -4,7 +4,9 @@
 
 a,
 input,
-button {
+button,
+span,
+label {
   @apply ease-in duration-200;
 }
 

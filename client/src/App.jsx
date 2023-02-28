@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import { UserContextProvider } from './context/UserContext.jsx';
 
-import { HomePage, LoginPage, RegisterPage, ProfilePage, PlacesPage, BookingsPage } from './pages';
+import { HomePage, LoginPage, RegisterPage, ProfilePage, PlacesPage, BookingsPage, PlacePage } from './pages';
 import { Layout, PlacesForm } from './components';
 
 axios.defaults.baseURL = 'http://localhost:4000';
@@ -22,6 +22,7 @@ const App = () => {
           <Route path='/account/places/new' element={<PlacesForm />} />
           <Route path='/account/places/:id' element={<PlacesForm />} />
           <Route path='/account/bookings' element={<BookingsPage />} />
+          <Route path='/place/:id' element={<PlacePage />} />
         </Route>
       </Routes>
     </UserContextProvider>
