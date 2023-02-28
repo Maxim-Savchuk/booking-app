@@ -19,7 +19,7 @@ const HomePage = () => {
                                 <img className='rounded-2xl object-cover aspect-square' src={'http://localhost:4000/uploads/' + place.photos?.[0]} alt={place.title} />
                             )}
                         </div>
-                        <h3 className='font-bold '>{place.address}</h3>
+                        <h3 className='font-bold truncate'>{place.address}</h3>
                         <h2 className='text-sm truncate text-gray-500'>{place.title}</h2>
                         <div className='mt-2'><span className='font-bold'>${place.price}</span> per night</div>
                     </Link>
