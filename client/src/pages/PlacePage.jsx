@@ -2,6 +2,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
+import { PhotoGallery, PlaceWidget } from '../components';
+
 const PlacePage = () => {
     const { id } = useParams();
     const [place, setPlace] = React.useState(null);
@@ -19,28 +21,7 @@ const PlacePage = () => {
     if (!place) return 'Loading...';
 
     if (showAllPhotos) {
-        return (
-            <div className='absolute bg-white text-white inset-0 min-h-screen'>
-                <div className='bg-black/90 p-8 grid gap-4'>
-                    <div>
-                        <h2 className='text-3xl  mr-49'>Photos of {place.title}</h2>
-                        <button className='fixed text-gray-800 right-8 hover:text-black top-8 shadow bg-white flex gap-2 py-2 px-4 rounded-2xl' type='button' onClick={() => setShowAllPhotos(false)}>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                            Close photos
-                        </button>
-                    </div>
-                    {place?.photos?.length > 0 && (
-                        place.photos.map((photo, i) => (
-                            <div key={photo + i}>
-                                <img className='w-full' src={'http://localhost:4000/uploads/' + photo} alt={place.title} />
-                            </div>
-                        ))
-                    )}
-                </div>
-            </div>
-        )
+        return <PhotoGallery place={place} setShowAllPhotos={setShowAllPhotos} />
     }
 
     return (
@@ -88,26 +69,7 @@ const PlacePage = () => {
                     <span> Check out: {place.checkOut}:00</span>
                     <span> Max number of guests: {place.maxGuests}</span>
                 </div>
-                <div className='bg-white shadow rounded-2xl p-4'>
-                    <h2 className='text-2xl text-center'>Price: ${place.price} / per night</h2>
-                    <div className="border rounded-2xl mt-4">
-                        <div className="flex ">
-                            <div className='py-3 px-4'>
-                                <label>Check in: </label>
-                                <input type="date" />
-                            </div>
-                            <div className='py-3 p-4 border-l'>
-                                <label>Check out: </label>
-                                <input type="date" />
-                            </div>
-                        </div>
-                        <div className='py-3 p-4 border-t'>
-                            <label>Number of quests :</label>
-                            <input type="number" value={1} />
-                        </div>
-                    </div>
-                    <button type='button' className='primary'>Book this place</button>
-                </div>
+                <PlaceWidget place={place} />
             </div>
             <div className='bg-white -mx-8 px-8 py-4 border-t'>
                 <div className='text-sm text-gray-800 leading-5'>
