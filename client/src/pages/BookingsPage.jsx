@@ -19,7 +19,7 @@ const BookingsPage = () => {
             <ProfileNav />
             <div className='flex flex-col gap-4' >
                 {bookings?.length > 0 && bookings.map(booking => (
-                    <Link to={`/account/bookings/${booking._id}`} className='flex gap-4 bg-white rounded-2xl overflow-hidden'>
+                    <Link key={booking._id} to={`/account/bookings/${booking._id}`} className='flex gap-4 bg-white rounded-2xl overflow-hidden'>
                         <div className='flex w-48 bg-gray-300 '>
                             {booking.place.photos.length > 0 && (
                                 <img className='w-full object-cover \' src={'http://localhost:4000/uploads/' + booking.place.photos[0]} alt={booking.place.title} />

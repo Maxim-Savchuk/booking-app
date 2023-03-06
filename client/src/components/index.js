@@ -5,5 +5,6 @@ export { default as PlacesList } from './Places/PlacesList.jsx';
 export { default as Layout } from './Layout/Layout.jsx';
 export { default as ProfileNav } from './Profile/ProfileNav.jsx';
 export { default as AccountProfile } from './Profile/AccountProfile.jsx';
-export { default as PhotoGallery } from './Place/PhotoGallery.jsx';
 export { default as PlaceWidget } from './Place/PlaceWidget.jsx';
+export { default as PlaceGallery } from './Place/PlaceGallery.jsx';
+export { default as PlaceMapLink } from './Place/PlaceMapLink.jsx';
