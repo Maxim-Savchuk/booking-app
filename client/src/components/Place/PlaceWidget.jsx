@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
 import { differenceInCalendarDays } from 'date-fns';
+import { UserContext } from '../../context/UserContext';
 
 const PlaceWidget = ({ place }) => {
     const [checkIn, setCheckIn] = React.useState('');
@@ -10,6 +11,13 @@ const PlaceWidget = ({ place }) => {
     const [name, setName] = React.useState('');
     const [phone, setPhone] = React.useState('');
     const [redirect, setRedirect] = React.useState('');
+    const { user } = React.useContext(UserContext);
+
+    React.useEffect(() => {
+        if (user) {
+            setName(user.name);
+        }
+    }, [user])
 
     let numberOfNights = 0;
     if (checkIn && checkOut) {

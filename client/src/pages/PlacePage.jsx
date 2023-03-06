@@ -71,7 +71,7 @@ const PlacePage = () => {
                 </div>
                 <PlaceWidget place={place} />
             </div>
-            <div className='bg-white -mx-8 px-8 py-4 border-t'>
+            <div className='bg-white -mx-8 px-8 py-4 border-t border-b'>
                 <div className='text-sm text-gray-800 leading-5'>
                     <h2 className='font-bold text-black text-2xl mb-2'>Extra information</h2>
                     {place.extraInfo}

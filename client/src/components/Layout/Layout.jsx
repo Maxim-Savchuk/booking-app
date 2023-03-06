@@ -5,7 +5,7 @@ import Navbar from './Navbar.jsx'
 
 const Layout = () => {
     return (
-        <div className='py-4 px-8 flex flex-col min-h-screen font-medium'>
+        <div className='py-4 px-8 flex flex-col min-h-screen font-medium bg-gray-100'>
             <Navbar />
             <Outlet />
         </div>
