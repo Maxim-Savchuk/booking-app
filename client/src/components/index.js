@@ -8,3 +8,4 @@ export { default as AccountProfile } from './Profile/AccountProfile.jsx';
 export { default as PlaceWidget } from './Place/PlaceWidget.jsx';
 export { default as PlaceGallery } from './Place/PlaceGallery.jsx';
 export { default as PlaceMapLink } from './Place/PlaceMapLink.jsx';
+export { default as BookingsDates } from './Bookings/BookingsDates.jsx';
