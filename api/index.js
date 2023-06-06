@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
@@ -11,7 +12,7 @@ const imageDownloader = require('image-downloader');
 const multer = require('multer');
 const fs = require('fs');
 
-require('dotenv').config();
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 const app = express();
 
 const bcryptSalt = bcrypt.genSaltSync(10);
@@ -225,4 +226,4 @@ app.get('/bookings', async (req, res) => {
   res.json(await Booking.find({ user: userData.id }).populate('place'));
 });
 
-app.listen(4000);
+app.listen(process.env.PORT || 5173);
